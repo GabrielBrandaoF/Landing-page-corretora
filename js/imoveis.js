@@ -1,0 +1,166 @@
+/* =======================================================================
+   IMÓVEIS — Fátima Brandão
+   -----------------------------------------------------------------------
+   Este arquivo é a sua "planilha" de imóveis. Para cadastrar um novo
+   imóvel, copie um dos blocos { ... } abaixo, cole no final da lista
+   (antes do "];") e altere os valores.
+
+   CAMPOS:
+   id         → número único (não repita). Ex: 7, 8, 9...
+   tipo       → "Casa" ou "Apartamento"
+   operacao   → "Venda" ou "Aluguel"
+   titulo     → título curto que aparece no card e no topo da página
+   bairro     → bairro do imóvel
+   cidade     → cidade / região
+   preco      → número puro, sem "R$" nem pontos (ex: 320000)
+   quartos, banheiros, vagas → números
+   area       → metragem em m² (número)
+   destaque   → true para mostrar a etiqueta "Destaque" no card
+   descricao  → texto livre, pode ter vários parágrafos (use \n\n para
+                separar parágrafos)
+   capa       → caminho da foto principal (aparece no card da listagem)
+   imagens    → lista de fotos da galeria (a primeira pode repetir a capa).
+                Quanto mais fotos, melhor — adicione quantas quiser.
+
+   DICA: salve as fotos dos imóveis dentro da pasta "img/" (crie
+   subpastas por imóvel se preferir, ex: img/imovel-07/foto1.jpg) e
+   aponte o caminho aqui.
+   ======================================================================= */
+
+const IMOVEIS = [
+
+  {
+    id: 1,
+    tipo: "Apartamento",
+    operacao: "Venda",
+    titulo: "Apartamento no Village das Estrelas",
+    bairro: "Ubatuba",
+    cidade: "São José de Ribamar - MA",
+    preco: 220000,
+    quartos: 2,
+    banheiros: 1,
+    vagas: 1,
+    area: 40.94,
+    destaque: true,
+    descricao: "Apartamentos inclusos no programa Minha Casa Minha Vida, com renda a partir de R$2000.00, com subsídio de ate R$55.000. \n\nCondomínio com portaria 24h, área de lazer completa e fácil acesso às principais vias da cidade.",
+    capa: "img/estrelas1.jpg",
+    imagens: [
+      "img/estrelas1.jpg",
+      "img/estrelas2.jpg",
+      "img/estrelas3.jpeg",
+      "img/estrelas4.jpeg"
+    ]
+  },
+
+  {
+    id: 2,
+    tipo: "Casa",
+    operacao: "Venda",
+    titulo: "Casa em condomínio Villa Terrari",
+    bairro: "Vila da Maioba",
+    cidade: "Paço do Lumiar - MA",
+    preco: 480000,
+    quartos: 3,
+    banheiros: 2,
+    vagas: 2,
+    area: 72.23,
+    destaque: true,
+    descricao: "Casa grande em condomínio clube fechado, com 3 quartos sendo 2 suítes. Lazer e comodidade para toda a família, com piscinas, espaços gourmet, salão de jogos, playground e estacionamento para visitantes.\n\nAo lado da nova Avenida Metropolitana, garantindo mobilidade e acesso rápido a mais de 50 bairros e às praias da Grande Ilha.",
+    capa: "img/terrari3.jpg",
+    imagens: [
+      "img/terrari3.jpg",
+      "img/terrari2.jpg",
+      "img/terrari1.jpg",
+      "img/terrari4.jpg"
+      /* substitua estas fotos de exemplo pelas fotos reais do imóvel */
+    ]
+  },
+
+  {
+    id: 3,
+    tipo: "Apartamento",
+    operacao: "Venda",
+    titulo: "Apartamento no Ilha dos Vinhais",
+    bairro: "Vinhais",
+    cidade: "São Luís - MA",
+    preco: 260000,
+    quartos: 2,
+    banheiros: 1,
+    vagas: 1,
+    area: 43.73,
+    destaque: true,
+    descricao: "Viva no Residencial Ilha dos Vinhais, localizado atrás do Shopping da Ilha, em uma das regiões mais valorizadas de São Luís. Apartamentos de 2 quartos com opções de varanda, suíte e lazer completo.\n\nAproveite condições especiais para conquistar seu imóvel, com ITBI e cartório grátis, além de financiamento facilitado. O lugar ideal para morar ou investir com praticidade e segurança.",
+    capa: "img/vinhais1.JPG",
+    imagens: [
+      "img/vinhais1.JPG",
+      "img/vinhais2.JPG",
+      "img/vinhais3.JPG",
+      "img/vinhais4.JPG",
+    ]
+  },
+
+  {
+    id: 4,
+    tipo: "Apartamento",
+    operacao: "Venda",
+    titulo: "Apartamento no Ilha de Santorini",
+    bairro: "Angelim",
+    cidade: "São Luís - MA",
+    preco: 260000,
+    quartos: 2,
+    banheiros: 1,
+    vagas: 1,
+    area: 43.73,
+    destaque: false,
+    descricao: "Apartamentos de 2 quartos no Angelim, com lazer completo, localização estratégica e toda a qualidade MRV para você viver com mais conforto.\n\nFinanciamento facilitado, uso do FGTS e ITBI + cartório grátis, tornando a conquista do seu imóvel ainda mais acessível.",
+    capa: "img/santorini1.jpg",
+    imagens: [
+      "img/santorini1.jpg",
+      "img/santorini2.jpg",
+      "img/santorini3.jpg",
+      "img/santorini4.jpg"
+    ]
+  },
+
+  {
+    id: 5,
+    tipo: "Apartamento",
+    operacao: "Venda",
+    titulo: "Apartamento reformado no Calhau",
+    bairro: "Calhau",
+    cidade: "São Luís - MA",
+    preco: 550000,
+    quartos: 3,
+    banheiros: 2,
+    vagas: 2,
+    area: 95,
+    destaque: true,
+    descricao: "Apartamento totalmente reformado a poucos minutos da praia. Acabamento de alto padrão, cozinha americana e suíte master com closet.\n\nCondomínio com piscina, academia e salão de festas.",
+    capa: "https://images.unsplash.com/photo-1768488314310-3742b3c75579?q=80&w=1200&auto=format&fit=crop",
+    imagens: [
+      "https://images.unsplash.com/photo-1768488314310-3742b3c75579?q=80&w=1400&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1759162788764-f40075c8857f?q=80&w=1400&auto=format&fit=crop"
+    ]
+  },
+
+  {
+    id: 6,
+    tipo: "Casa",
+    operacao: "Aluguel",
+    titulo: "Casa com quintal na Cohama",
+    bairro: "Cohama",
+    cidade: "São Luís - MA",
+    preco: 1800,
+    quartos: 2,
+    banheiros: 1,
+    vagas: 1,
+    area: 90,
+    destaque: false,
+    descricao: "Casa aconchegante com quintal, em rua residencial tranquila na Cohama. Próxima a mercados, farmácias e transporte público.\n\nDisponível para mudança imediata.",
+    capa: "https://images.unsplash.com/photo-1757359056339-22968344cce6?q=80&w=1200&auto=format&fit=crop",
+    imagens: [
+      "https://images.unsplash.com/photo-1757359056339-22968344cce6?q=80&w=1400&auto=format&fit=crop"
+    ]
+  }
+
+];

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fátima Brandão | Corretora de Imóveis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+ 
+<header class="nav wrap">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="img/perfil.jpg" alt="Foto de perfil da corretora Fátima Brandão" class="logo-mark">
+      <span class="logo-text">
+        <strong>Fátima Brandão</strong>
+        <span>Corretora de Imóveis</span>
+      </span>
+    </a>
+ 
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Início</a></li>
+        <li><a href="#imoveis">Imóveis</a></li>
+        <li><a href="https://wa.me/5598988044876?text=Ol%C3%A1%2C%20vim%20do%20site%20e%20gostaria%20de%20realizar%20um%20anúncio%20de%20imóvel%20no%20seu%20site%2C%20poderiamos%20realizar%20uma%20avalia%C3%A7%C3%A3o%3F" target="_blank" rel="noopener noreferrer">Anunciar imóvel</a></li>
+        <li><a href="#sobre">Sobre a Fátima</a></li>
+        <li><a href="https://wa.me/5598988044876" target="_blank" rel="noopener noreferrer">Contato</a></li>
+      </ul>
+    </nav>
+ 
+    <a href="#contato" class="nav-cta">
+      <span class="cta-label">Agendar visita</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </a>
+  </div>
+</header>
+ 
+<section class="hero wrap">
+  <div class="hero-grid">
+ 
+    <div class="hero-content">
+      <span class="eyebrow">CRECI-MA 8604º · Atendimento na Grande Ilha</span>
+ 
+      <h1 class="hero-title">Um imóvel para <em>cada momento</em> da sua vida.</h1>
+ 
+      <p class="hero-lede">
+        Casas e apartamentos escolhidos com cuidado para o primeiro imóvel, a casa que cresce com a família ou o próximo recomeço. A Corretora Fátima Brandão acompanhará você do início ao contrato assinado.
+      </p>
+ 
+      <div class="cta-row">
+        <a href="#imoveis" class="btn btn-primary">
+          <span class="icon-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </span>
+          Ver imóveis disponíveis
+        </a>
+        <a href="#contato" class="btn btn-ghost">Falar com a Fátima</a>
+      </div>
+ 
+      <div class="stats-row">
+        <div class="stat">
+          <strong>7 anos</strong>
+          <span>de experiência no mercado</span>
+        </div>
+        <div class="stat">
+          <strong>480+</strong>
+          <span>imóveis negociados</span>
+        </div>
+        <div class="stat">
+          <strong>97%</strong>
+          <span>clientes satisfeitos</span>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="hero-media">
+      <div class="media-frame">
+        <!-- Imagem principal do imóvel em destaque: altere este src para a foto do imóvel principal -->
+        <img src="img/estrelas1.jpg" alt="Casa moderna ao entardecer, um dos imóveis apresentados pela Fátima Brandão">
+ 
+        <!-- Thumbnail do primeiro imóvel ou foto secundária pequena -->
+        <div class="listing-chip">
+          <span class="dot-img"><img src="img/estrelas1.jpg" alt=""></span>
+          <span class="txt"><b>Apartamento · 2 quartos</b><span>Village das Estrelas</span></span>
+        </div>
+ 
+        <div class="listing-chip listing-chip-2">
+          <!-- Texto e ícone do segundo imóvel em destaque: substitua por foto ou ícone se desejar -->
+          <span class="dot-img">🏢</span>
+          <span class="txt"><b>Próximo a Mix Mateus</b><span>Bairro Maiobão</span></span>
+        </div>
+ 
+        <!-- Bloco de provas sociais / avaliações. Não é imagem de imóvel, mas pode manter para credibilidade -->
+        <div class="proof-card">
+          <div class="proof-left" style="display:flex;align-items:center;gap:14px;">
+            <div class="avatar-stack">
+              <img src="https://i.pravatar.cc/72?img=32" alt="">
+              <img src="https://i.pravatar.cc/72?img=47" alt="">
+              <img src="https://i.pravatar.cc/72?img=12" alt="">
+            </div>
+            <div class="proof-copy">
+              <strong>+480 famílias</strong>
+              <span>encontraram seu lar</span>
+            </div>
+          </div>
+          <div class="proof-rating">
+            <div class="stars">★★★★★</div>
+            <small>4.9 · 150 avaliações</small>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<div class="search-shell">
+  <div class="search-bar">
+    <div class="search-tabs">
+      <button class="active" type="button" data-op="Venda">Comprar</button>
+      <button type="button" data-op="Aluguel">Alugar</button>
+    </div>
+ 
+    <div class="search-field">
+      <label for="tipo">Tipo</label>
+      <select id="tipo">
+        <option value="">Todos os tipos</option>
+        <option value="Casa">Casa</option>
+        <option value="Apartamento">Apartamento</option>
+      </select>
+    </div>
+ 
+    <div class="search-field">
+      <label for="local">Localização</label>
+      <input id="local" type="text" placeholder="Bairro ou cidade">
+    </div>
+ 
+    <div class="search-field">
+      <label for="faixa">Faixa de preço</label>
+      <select id="faixa">
+        <option value="">Qualquer valor</option>
+        <option value="0-300000">Até R$ 300 mil</option>
+        <option value="300000-600000">R$ 300 a 600 mil</option>
+        <option value="600000-1000000">R$ 600 mil a 1 milhão</option>
+        <option value="1000000-999999999">Acima de R$ 1 milhão</option>
+      </select>
+    </div>
+ 
+    <button class="search-submit" type="button">
+      Buscar imóveis
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    </button>
+  </div>
+</div>
+ 
+<section class="properties wrap" id="imoveis">
+  <div class="properties-head">
+    <div>
+      <span class="eyebrow">Acervo atualizado toda semana</span>
+      <h2 class="properties-title">Imóveis disponíveis</h2>
+      <p class="properties-lede">Casas e apartamentos selecionados pela Fátima Brandão. Clique em um imóvel para ver mais fotos e todos os detalhes.</p>
+    </div>
+
+    <div class="filtro-tipo">
+      <button class="active" data-tipo="todos" type="button">Todos</button>
+      <button data-tipo="casa" type="button">Casas</button>
+      <button data-tipo="apartamento" type="button">Apartamentos</button>
+    </div>
+  </div>
+
+  <div class="properties-grid" id="imoveis-grid">
+    <!-- os cards são gerados automaticamente a partir de js/imoveis.js -->
+  </div>
+</section>
+
+<section class="wrap sobre-section" id="sobre">
+  <div class="sobre-grid">
+    <div class="sobre-media">
+      <!-- Foto da Fátima: altere o src abaixo para a foto que deseja usar -->
+      <img src="img/fatima.jpg" alt="Foto da corretora Fátima Brandão">
+    </div>
+
+    <div class="sobre-content">
+      <span class="eyebrow">Sobre mim</span>
+      <h2 class="sobre-title">Corretora Fátima Brandão.</h2>
+
+      <!-- Texto de apresentação: substitua pelo texto real sobre a Fátima -->
+      <p class="sobre-text">Com 7 anos de experiência no mercado imobiliário da Grande Ilha, a Fátima Brandão já ajudou mais de 480 famílias a encontrarem o imóvel certo — seja o primeiro apartamento, a casa que acompanha o crescimento da família ou um novo recomeço.</p>
+      <p class="sobre-text">Atendimento próximo, transparente e sem pressa, do primeiro contato até a assinatura do contrato. CRECI-MA 8604º.</p>
+
+      <div class="cta-row">
+        <a href="https://wa.me/5598992298040" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <span class="icon-dot">
+            <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </span>
+          Falar com a Fátima
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="contato">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">
+        <strong>Fátima Brandão</strong>
+        <span>Corretora de Imóveis</span>
+      </span>
+      <p>Casas e apartamentos em toda a Grande Ilha, com atendimento próximo do início ao contrato assinado.</p>
+    </div>
+
+    <div class="footer-actions">
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost footer-social-btn">
+        Instagram
+      </a>
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost footer-social-btn">
+        TikTok
+      </a>
+      <a href="https://wa.me/5598992298040" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+        <span class="icon-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </span>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/imoveis.js"></script>
+<script src="js/site.js"></script>
+
+</body>
+</html>
+ 

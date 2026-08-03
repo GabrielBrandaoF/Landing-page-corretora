@@ -111,7 +111,7 @@ const IMOVEIS = [
     banheiros: 1,
     vagas: 1,
     area: 43.73,
-    destaque: false,
+    destaque: true,
     descricao: "Apartamentos de 2 quartos no Angelim, com lazer completo, localização estratégica e toda a qualidade MRV para você viver com mais conforto.\n\nFinanciamento facilitado, uso do FGTS e ITBI + cartório grátis, tornando a conquista do seu imóvel ainda mais acessível.",
     capa: "img/santorini1.jpg",
     imagens: [
@@ -124,42 +124,50 @@ const IMOVEIS = [
 
   {
     id: 5,
-    tipo: "Apartamento",
+    tipo: "Casa",
     operacao: "Venda",
-    titulo: "Apartamento reformado no Calhau",
-    bairro: "Calhau",
-    cidade: "São Luís - MA",
-    preco: 550000,
-    quartos: 3,
+    titulo: "Casa no Condomínio Rafaella",
+    bairro: "Vila Piramide",
+    cidade: "São José de Ribamar - MA",
+    preco: 302000,
+    quartos: 2,
     banheiros: 2,
-    vagas: 2,
-    area: 95,
+    vagas: 1,
+    area: 55.30,
     destaque: true,
-    descricao: "Apartamento totalmente reformado a poucos minutos da praia. Acabamento de alto padrão, cozinha americana e suíte master com closet.\n\nCondomínio com piscina, academia e salão de festas.",
-    capa: "https://images.unsplash.com/photo-1768488314310-3742b3c75579?q=80&w=1200&auto=format&fit=crop",
+    descricao: "Casa nova que garante todo conforto e segurança para voce, próxima a Av.General Arthur Carvalho\n\nCondomínio com piscina, campo de futebol, campo de areia e churrasqueira.",
+    capa: "img/rafaela1.JPG",
     imagens: [
-      "https://images.unsplash.com/photo-1768488314310-3742b3c75579?q=80&w=1400&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1759162788764-f40075c8857f?q=80&w=1400&auto=format&fit=crop"
+      "img/rafaela1.JPG",
+      "img/rafaela2.JPG",
+      "img/rafaela3.JPG",
+      "img/rafaela4.JPG"
     ]
   },
 
   {
     id: 6,
-    tipo: "Casa",
-    operacao: "Aluguel",
-    titulo: "Casa com quintal na Cohama",
-    bairro: "Cohama",
+    tipo: "Apartamento",
+    operacao: "Venda",
+    titulo: "Apartamento no Cidade de Viena",
+    bairro: "Olho D'Água",
     cidade: "São Luís - MA",
-    preco: 1800,
-    quartos: 2,
-    banheiros: 1,
-    vagas: 1,
-    area: 90,
+    preco: 683000,
+    quartos: 3,
+    banheiros: 2,
+    vagas: 2,
+    area: 83.58,
     destaque: false,
-    descricao: "Casa aconchegante com quintal, em rua residencial tranquila na Cohama. Próxima a mercados, farmácias e transporte público.\n\nDisponível para mudança imediata.",
-    capa: "https://images.unsplash.com/photo-1757359056339-22968344cce6?q=80&w=1200&auto=format&fit=crop",
+    descricao: "O Cidade de Viena chega como o novo empreendimento da Construtora Lua Nova, destacando-se pelo design contemporâneo, elevado padrão de construção e planejamento inteligente.\n\n Idealizado pelos arquitetos Leonardo Borges e Cláudia Albertini, o projeto reúne elegância, funcionalidade e qualidade em cada detalhe.",
+    capa: "img/viena2.jpg",
     imagens: [
-      "https://images.unsplash.com/photo-1757359056339-22968344cce6?q=80&w=1400&auto=format&fit=crop"
+      "img/viena1.jpeg",
+      "img/viena2.jpg",
+      "img/viena3.jpg",
+      "img/viena4.jpg",
+      "img/viena5.jpg",
+      "img/viena6.jpg",
+      "img/viena7.jpg",
     ]
   }
 

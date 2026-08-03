@@ -201,6 +201,25 @@
           Falar com a Fátima
         </a>
       </div>
+
+      <div class="sobre-clientes">
+       <div class="avatar-stack">
+         <button class="client-photo-btn" type="button" data-src="img/cliente1.jpg" data-alt="Cliente satisfeito" aria-label="Abrir foto de cliente 1">
+           <img src="img/cliente1.jpg" alt="Cliente satisfeito">
+         </button>
+         <button class="client-photo-btn" type="button" data-src="img/cliente2.jpg" data-alt="Cliente satisfeito" aria-label="Abrir foto de cliente 2">
+           <img src="img/cliente2.jpg" alt="Cliente satisfeito">
+         </button>
+         <button class="client-photo-btn" type="button" data-src="img/cliente3.jpg" data-alt="Cliente satisfeito" aria-label="Abrir foto de cliente 3">
+           <img src="img/cliente3.jpg" alt="Cliente satisfeito">
+         </button>
+         <button class="client-photo-btn" type="button" data-src="img/cliente4.jpg" data-alt="Cliente satisfeito" aria-label="Abrir foto de cliente 4">
+           <img src="img/cliente4.jpg" alt="Cliente satisfeito">
+         </button>
+       </div>
+      <span class="sobre-clientes-texto">+480 famílias já encontraram seu lar com a Fátima</span>
+     </div>
+
     </div>
   </div>
 </section>
@@ -231,6 +250,18 @@
     </div>
   </div>
 </footer>
+
+<div class="photo-modal" id="client-photo-modal" hidden>
+  <div class="photo-modal-backdrop" data-close="true"></div>
+  <div class="photo-modal-dialog" role="dialog" aria-modal="true" aria-label="Galeria de fotos dos clientes">
+    <button class="photo-modal-close" type="button" aria-label="Fechar galeria">×</button>
+    <button class="photo-modal-nav photo-modal-prev" type="button" aria-label="Foto anterior">‹</button>
+    <div class="photo-modal-content">
+      <img id="photo-modal-image" src="" alt="">
+    </div>
+    <button class="photo-modal-nav photo-modal-next" type="button" aria-label="Próxima foto">›</button>
+  </div>
+</div>
 
 <script src="js/imoveis.js"></script>
 <script src="js/site.js"></script>

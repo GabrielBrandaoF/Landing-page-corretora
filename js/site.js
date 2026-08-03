@@ -92,7 +92,7 @@ function renderDetalheImovel() {
   document.title = `${imovel.titulo} | Fátima Brandão`;
 
   const galeriaThumbs = imovel.imagens.map((src, i) => `
-    <button class="thumb ${i === 0 ? 'active' : ''}" data-src="${src}" type="button" aria-label="Ver foto ${i + 1}">
+    <button class="thumb ${i === 0 ? 'active' : ''}" data-src="${src}" data-index="${i}" type="button" aria-label="Ver foto ${i + 1}">
       <img src="${src}" alt="Foto ${i + 1} de ${imovel.titulo}">
     </button>
   `).join('');
@@ -113,6 +113,10 @@ function renderDetalheImovel() {
         <div class="galeria-principal">
           <img id="foto-principal" src="${imovel.imagens[0]}" alt="${imovel.titulo}">
           <span class="property-tag property-tag-op" style="position:absolute;top:18px;left:18px;">${imovel.operacao}</span>
+          ${imovel.imagens.length > 1 ? `
+            <button class="galeria-nav galeria-prev" type="button" aria-label="Foto anterior">‹</button>
+            <button class="galeria-nav galeria-next" type="button" aria-label="Próxima foto">›</button>
+          ` : ''}
         </div>
         ${imovel.imagens.length > 1 ? `<div class="galeria-thumbs">${galeriaThumbs}</div>` : ''}
       </div>
@@ -158,13 +162,49 @@ function renderDetalheImovel() {
     </div>
   `;
 
-  /* troca a foto principal ao clicar nas miniaturas */
-  container.querySelectorAll('.thumb').forEach(btn => {
+  const fotoPrincipal = document.getElementById('foto-principal');
+  const thumbs = container.querySelectorAll('.thumb');
+  const prevBtn = container.querySelector('.galeria-prev');
+  const nextBtn = container.querySelector('.galeria-next');
+  const imagens = Array.from(thumbs).map(btn => btn.dataset.src);
+  let indiceAtual = 0;
+
+  function atualizarGaleria(index) {
+    indiceAtual = index;
+    const src = imagens[index];
+    if (!src) return;
+    fotoPrincipal.src = src;
+    thumbs.forEach((thumb, i) => thumb.classList.toggle('active', i === index));
+  }
+
+  thumbs.forEach(btn => {
     btn.addEventListener('click', () => {
-      document.getElementById('foto-principal').src = btn.dataset.src;
-      container.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
+      atualizarGaleria(Number(btn.dataset.index));
     });
+  });
+
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      const novoIndice = (indiceAtual - 1 + imagens.length) % imagens.length;
+      atualizarGaleria(novoIndice);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const novoIndice = (indiceAtual + 1) % imagens.length;
+      atualizarGaleria(novoIndice);
+    });
+  }
+
+  document.addEventListener('keydown', event => {
+    if (document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'SELECT') return;
+    if (event.key === 'ArrowLeft') {
+      const novoIndice = (indiceAtual - 1 + imagens.length) % imagens.length;
+      atualizarGaleria(novoIndice);
+    }
+    if (event.key === 'ArrowRight') {
+      const novoIndice = (indiceAtual + 1) % imagens.length;
+      atualizarGaleria(novoIndice);
+    }
   });
 
   const outros = IMOVEIS.filter(i => i.id !== imovel.id).slice(0, 3);
@@ -237,9 +277,67 @@ function initBuscaImoveis() {
   });
 }
 
+function initGaleriaClientes() {
+  const botoes = document.querySelectorAll('.client-photo-btn');
+  const modal = document.getElementById('client-photo-modal');
+  const image = document.getElementById('photo-modal-image');
+  const closeBtn = modal?.querySelector('.photo-modal-close');
+  const prevBtn = modal?.querySelector('.photo-modal-prev');
+  const nextBtn = modal?.querySelector('.photo-modal-next');
+
+  if (!botoes.length || !modal || !image || !closeBtn || !prevBtn || !nextBtn) return;
+
+  const sources = Array.from(botoes).map(btn => ({
+    src: btn.dataset.src,
+    alt: btn.dataset.alt || 'Foto do cliente'
+  }));
+
+  let indexAtual = 0;
+
+  function abrirGaleria(i) {
+    indexAtual = i;
+    const item = sources[indexAtual];
+    if (!item) return;
+    image.src = item.src;
+    image.alt = item.alt;
+    modal.hidden = false;
+    document.body.classList.add('modal-open');
+  }
+
+  function fecharGaleria() {
+    modal.hidden = true;
+    document.body.classList.remove('modal-open');
+  }
+
+  function mudarFoto(delta) {
+    const proximo = (indexAtual + delta + sources.length) % sources.length;
+    abrirGaleria(proximo);
+  }
+
+  botoes.forEach((btn, index) => {
+    btn.addEventListener('click', () => abrirGaleria(index));
+  });
+
+  closeBtn.addEventListener('click', fecharGaleria);
+  prevBtn.addEventListener('click', () => mudarFoto(-1));
+  nextBtn.addEventListener('click', () => mudarFoto(1));
+
+  modal.addEventListener('click', event => {
+    if (event.target.dataset.close === 'true') fecharGaleria();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (modal.hidden) return;
+    if (event.key === 'Escape') fecharGaleria();
+    if (event.key === 'ArrowLeft') mudarFoto(-1);
+    if (event.key === 'ArrowRight') mudarFoto(1);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderGrid('imoveis-grid');
   initFiltroImoveis();
   initBuscaImoveis();
   renderDetalheImovel();
+  initGaleriaClientes();
 });

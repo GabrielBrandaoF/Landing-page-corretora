@@ -51,6 +51,7 @@ function renderGrid(containerId, lista) {
     return;
   }
   el.innerHTML = dados.map(cardImovelHTML).join('');
+  revelarGradeCards(containerId);
 }
 
 /* -------- Filtro simples por tipo (Casa / Apartamento / Todos) -------- */
@@ -173,7 +174,9 @@ function renderDetalheImovel() {
     indiceAtual = index;
     const src = imagens[index];
     if (!src) return;
+    fotoPrincipal.classList.remove('img-loaded');
     fotoPrincipal.src = src;
+    marcarImagemCarregada(fotoPrincipal);
     thumbs.forEach((thumb, i) => thumb.classList.toggle('active', i === index));
   }
 
@@ -334,10 +337,188 @@ function initGaleriaClientes() {
   });
 }
 
+/* =======================================================================
+   ANIMAÇÕES — reveal ao rolar, fade de imagens, navbar e contadores
+   Tudo respeita prefers-reduced-motion e usa apenas transform/opacity.
+   ======================================================================= */
+const PREFERS_REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* -------- Fade suave ao carregar imagens (evita "pulo" de imagem quebrada) -------- */
+function marcarImagemCarregada(img) {
+  if (!img) return;
+  if (PREFERS_REDUCED_MOTION) {
+    img.classList.add('img-loaded');
+    return;
+  }
+  if (img.complete && img.naturalWidth > 0) {
+    img.classList.add('img-loaded');
+  } else {
+    img.addEventListener('load', () => img.classList.add('img-loaded'), { once: true });
+    img.addEventListener('error', () => img.classList.add('img-loaded'), { once: true });
+  }
+}
+
+function initImageFade(root = document) {
+  const seletor = '.property-card-image img, .galeria-principal img, .sobre-media img';
+  root.querySelectorAll(seletor).forEach(marcarImagemCarregada);
+}
+
+/* -------- Reveal ao rolar (Intersection Observer) -------- */
+let revealObserver = null;
+function getRevealObserver() {
+  if (revealObserver || PREFERS_REDUCED_MOTION) return revealObserver;
+  revealObserver = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('is-visible');
+        revealObserver.unobserve(entrada.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  return revealObserver;
+}
+
+function registrarReveal(elemento, { tipo = '', atrasoMs = 0 } = {}) {
+  if (!elemento) return;
+  if (PREFERS_REDUCED_MOTION) return;
+  elemento.classList.add('reveal');
+  if (tipo) elemento.classList.add(`reveal-${tipo}`);
+  if (atrasoMs) elemento.style.setProperty('--reveal-delay', `${atrasoMs}ms`);
+  getRevealObserver()?.observe(elemento);
+}
+
+/* aplica reveal com stagger a uma grade de cards recém-renderizada */
+function revelarGradeCards(containerId) {
+  const grid = document.getElementById(containerId);
+  if (!grid) return;
+  Array.from(grid.children).forEach((card, i) => {
+    registrarReveal(card, { atrasoMs: Math.min(i, 7) * 70 });
+  });
+  initImageFade(grid);
+}
+
+/* reveal genérico para seções estáticas do site (não recriadas por JS) */
+function initScrollRevealEstatico() {
+  if (PREFERS_REDUCED_MOTION) return;
+
+  const grupos = [
+    { seletor: '.properties-head', tipo: '' },
+    { seletor: '.search-shell', tipo: 'scale' },
+    { seletor: '.sobre-media', tipo: 'left' },
+    { seletor: '.sobre-content > *', tipo: '' },
+    { seletor: '.detalhe-galeria', tipo: 'left' },
+    { seletor: '.detalhe-info > *', tipo: '' },
+    { seletor: '.outros-imoveis h2', tipo: '' },
+    { seletor: '.footer-inner > *', tipo: '' }
+  ];
+
+  grupos.forEach(({ seletor, tipo }) => {
+    document.querySelectorAll(seletor).forEach((el, i) => {
+      registrarReveal(el, { tipo, atrasoMs: (i % 4) * 80 });
+    });
+  });
+}
+
+/* -------- Parallax discreto na imagem do Hero -------- */
+function initHeroParallax() {
+  if (PREFERS_REDUCED_MOTION) return;
+  const imagem = document.querySelector('.hero-media .media-frame img');
+  const hero = document.querySelector('.hero');
+  if (!imagem || !hero) return;
+
+  let ticking = false;
+  function atualizar() {
+    const rect = hero.getBoundingClientRect();
+    // só aplica enquanto o hero está visível, evitando trabalho desnecessário
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+      const deslocamento = Math.max(-24, Math.min(24, window.scrollY * 0.06));
+      imagem.style.transform = `translate3d(0, ${deslocamento}px, 0) scale(1.04)`;
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(atualizar);
+      ticking = true;
+    }
+  }, { passive: true });
+  atualizar();
+}
+
+/* -------- Navbar: encolhe e ganha blur ao rolar -------- */
+function initNavScroll() {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+
+  let ticking = false;
+  function atualizar() {
+    nav.classList.toggle('is-scrolled', window.scrollY > 12);
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(atualizar);
+      ticking = true;
+    }
+  }, { passive: true });
+  atualizar();
+}
+
+/* -------- Contagem animada das estatísticas do Hero -------- */
+function initContadoresStats() {
+  const stats = document.querySelectorAll('.stats-row .stat strong');
+  if (!stats.length) return;
+
+  if (PREFERS_REDUCED_MOTION) return;
+
+  function animarContagem(elemento) {
+    const textoOriginal = elemento.textContent.trim();
+    const match = textoOriginal.match(/^([\d.,]+)(.*)$/);
+    if (!match) return;
+
+    const numeroFinal = parseFloat(match[1].replace(/\./g, '').replace(',', '.'));
+    const sufixo = match[2];
+    if (Number.isNaN(numeroFinal)) return;
+
+    const duracao = 1200;
+    const inicio = performance.now();
+
+    function passo(agora) {
+      const progresso = Math.min((agora - inicio) / duracao, 1);
+      const facilitado = 1 - Math.pow(1 - progresso, 3); // ease-out cubic
+      const valorAtual = Math.round(numeroFinal * facilitado);
+      elemento.textContent = `${valorAtual}${sufixo}`;
+      if (progresso < 1) {
+        requestAnimationFrame(passo);
+      } else {
+        elemento.textContent = textoOriginal;
+      }
+    }
+    requestAnimationFrame(passo);
+  }
+
+  const observer = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+      if (entrada.isIntersecting) {
+        animarContagem(entrada.target);
+        observer.unobserve(entrada.target);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  stats.forEach(el => observer.observe(el));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderGrid('imoveis-grid');
   initFiltroImoveis();
   initBuscaImoveis();
   renderDetalheImovel();
   initGaleriaClientes();
+
+  initImageFade();
+  initScrollRevealEstatico();
+  initNavScroll();
+  initContadoresStats();
+  initHeroParallax();
 });

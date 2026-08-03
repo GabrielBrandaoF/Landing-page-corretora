@@ -141,7 +141,7 @@ function renderDetalheImovel() {
         </div>
 
         <div class="cta-row" style="margin-top:32px;">
-          <a href="https://wa.me/5598992298040?text=Ol%C3%A1!%20Tenho%20interesse%20no%20im%C3%B3vel%3A%20${encodeURIComponent(imovel.titulo)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <a href="https://wa.me/5598988044876?text=Ol%C3%A1!%20Tenho%20interesse%20no%20im%C3%B3vel%3A%20${encodeURIComponent(imovel.titulo)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             <span class="icon-dot">
               <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
             </span>

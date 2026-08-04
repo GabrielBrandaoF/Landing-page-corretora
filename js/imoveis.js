@@ -16,6 +16,7 @@
    quartos, banheiros, vagas → números
    area       → metragem em m² (número)
    destaque   → true para mostrar a etiqueta "Destaque" no card
+   lancamento → true para mostrar a etiqueta "Lançamento" no card
    renda      → (opcional) renda familiar mínima para financiar o imóvel,
                 número puro, sem "R$" nem pontos (ex: 2000). Se o imóvel
                 não tiver essa exigência ou você não quiser informar,
@@ -47,6 +48,7 @@ const IMOVEIS = [
     vagas: 1,
     area: 40.94,
     destaque: true,
+    lancamento: false,
     renda: null,
     descricao: "Apartamentos inclusos no programa Minha Casa Minha Vida, com renda a partir de R$2000.00, com subsídio de ate R$55.000. \n\nCondomínio com portaria 24h, área de lazer completa e fácil acesso às principais vias da cidade.",
     capa: "img/estrelas1.jpg",
@@ -70,7 +72,8 @@ const IMOVEIS = [
     banheiros: 2,
     vagas: 2,
     area: 72.23,
-    destaque: true,
+    destaque: false,
+    lancamento: false,
     renda: null,
     descricao: "Casa grande em condomínio clube fechado, com 3 quartos sendo 2 suítes. Lazer e comodidade para toda a família, com piscinas, espaços gourmet, salão de jogos, playground e estacionamento para visitantes.\n\nAo lado da nova Avenida Metropolitana, garantindo mobilidade e acesso rápido a mais de 50 bairros e às praias da Grande Ilha.",
     capa: "img/terrari3.jpg",
@@ -95,7 +98,8 @@ const IMOVEIS = [
     banheiros: 1,
     vagas: 1,
     area: 43.73,
-    destaque: true,
+    destaque: false,
+    lancamento: false,
     renda: null,
     descricao: "Viva no Residencial Ilha dos Vinhais, localizado atrás do Shopping da Ilha, em uma das regiões mais valorizadas de São Luís. Apartamentos de 2 quartos com opções de varanda, suíte e lazer completo.\n\nAproveite condições especiais para conquistar seu imóvel, com ITBI e cartório grátis, além de financiamento facilitado. O lugar ideal para morar ou investir com praticidade e segurança.",
     capa: "img/vinhais1.JPG",
@@ -119,7 +123,8 @@ const IMOVEIS = [
     banheiros: 1,
     vagas: 1,
     area: 43.73,
-    destaque: true,
+    destaque: false,
+    lancamento: false,
     renda: null,
     descricao: "Apartamentos de 2 quartos no Angelim, com lazer completo, localização estratégica e toda a qualidade MRV para você viver com mais conforto.\n\nFinanciamento facilitado, uso do FGTS e ITBI + cartório grátis, tornando a conquista do seu imóvel ainda mais acessível.",
     capa: "img/santorini1.jpg",
@@ -144,6 +149,7 @@ const IMOVEIS = [
     vagas: 1,
     area: 55.30,
     destaque: true,
+    lancamento: false,
     renda: null,
     descricao: "Casa nova que garante todo conforto e segurança para voce, próxima a Av.General Arthur Carvalho\n\nCondomínio com piscina, campo de futebol, campo de areia e churrasqueira.",
     capa: "img/rafaela1.JPG",
@@ -167,7 +173,8 @@ const IMOVEIS = [
     banheiros: 2,
     vagas: 2,
     area: 83.58,
-    destaque: false,
+    destaque: true,
+    lancamento: false,
     renda: null,
     descricao: "O Cidade de Viena chega como o novo empreendimento da Construtora Lua Nova, destacando-se pelo design contemporâneo, elevado padrão de construção e planejamento inteligente.\n\n Idealizado pelos arquitetos Leonardo Borges e Cláudia Albertini, o projeto reúne elegância, funcionalidade e qualidade em cada detalhe.",
     capa: "img/viena2.jpg",
@@ -183,3 +190,4 @@ const IMOVEIS = [
   }
 
 ];
+

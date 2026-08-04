@@ -27,7 +27,7 @@ function cardImovelHTML(imovel) {
         <img src="${imovel.capa}" alt="${imovel.titulo}" loading="lazy">
         <span class="property-tag property-tag-op">${imovel.operacao}</span>
         <span class="property-tag property-tag-tipo">${imovel.tipo}</span>
-        ${imovel.destaque ? '<span class="property-tag property-tag-destaque">Destaque</span>' : ''}
+        ${imovel.destaque ? '<span class="property-tag property-tag-destaque">Destaque</span>' : imovel.lancamento ? '<span class="property-tag property-tag-lancamento">Lançamento</span>' : ''}
       </div>
       <div class="property-card-body">
         <div class="property-card-top">
@@ -45,16 +45,25 @@ function cardImovelHTML(imovel) {
   `;
 }
 
+function ordenarImoveisPorPrioridade(imoveis) {
+  return [...imoveis].sort((a, b) => {
+    const prioridadeA = a.lancamento ? 0 : a.destaque ? 1 : 2;
+    const prioridadeB = b.lancamento ? 0 : b.destaque ? 1 : 2;
+    return prioridadeA - prioridadeB;
+  });
+}
+
 /* -------- Renderiza a grade de imóveis (index.html) -------- */
 function renderGrid(containerId, lista) {
   const el = document.getElementById(containerId);
   if (!el) return;
   const dados = lista || IMOVEIS;
-  if (dados.length === 0) {
+  const dadosOrdenados = containerId === 'imoveis-grid' ? ordenarImoveisPorPrioridade(dados) : dados;
+  if (dadosOrdenados.length === 0) {
     el.innerHTML = '<p class="empty-state">Nenhum imóvel cadastrado no momento.</p>';
     return;
   }
-  el.innerHTML = dados.map(cardImovelHTML).join('');
+  el.innerHTML = dadosOrdenados.map(cardImovelHTML).join('');
   revelarGradeCards(containerId);
 }
 
@@ -118,6 +127,7 @@ function renderDetalheImovel() {
         <div class="galeria-principal">
           <img id="foto-principal" src="${imovel.imagens[0]}" alt="${imovel.titulo}">
           <span class="property-tag property-tag-op" style="position:absolute;top:18px;left:18px;">${imovel.operacao}</span>
+          ${imovel.lancamento ? '<span class="property-tag property-tag-lancamento" style="position:absolute;top:18px;right:18px;">Lançamento</span>' : ''}
           ${imovel.imagens.length > 1 ? `
             <button class="galeria-nav galeria-prev" type="button" aria-label="Foto anterior">‹</button>
             <button class="galeria-nav galeria-next" type="button" aria-label="Próxima foto">›</button>

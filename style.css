@@ -645,6 +645,11 @@
     background: var(--brand);
     color: #fff;
   }
+  .property-tag-lancamento{
+    bottom: 14px; right: 14px;
+    background: #3C7FC3;
+    color: #fff;
+  }
 
   .property-card-body{
     padding: 20px 20px 22px;

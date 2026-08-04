@@ -7,6 +7,10 @@ function formatarPreco(imovel) {
   return imovel.operacao === 'Aluguel' ? `R$ ${valor}/mês` : `R$ ${valor}`;
 }
 
+function formatarRenda(imovel) {
+  return `R$ ${imovel.renda.toLocaleString('pt-BR')}`;
+}
+
 function iconesSpecs(imovel) {
   return `
     <span class="spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 4l9 6.5"/><path d="M5 9.5V20h14V9.5"/></svg>${imovel.quartos} qts</span>
@@ -136,8 +140,9 @@ function renderDetalheImovel() {
         <div class="detalhe-specs">
           <div class="detalhe-spec"><strong>${imovel.quartos}</strong><span>Quartos</span></div>
           <div class="detalhe-spec"><strong>${imovel.banheiros}</strong><span>Banheiros</span></div>
-          <div class="detalhe-spec"><strong>${imovel.vagas}</strong><span>Vagas</span></div>
+          ${imovel.vagas ? `<div class="detalhe-spec"><strong>${imovel.vagas}</strong><span>Vagas</span></div>` : ''}
           <div class="detalhe-spec"><strong>${imovel.area} m²</strong><span>Área</span></div>
+          ${imovel.renda ? `<div class="detalhe-spec"><strong>${formatarRenda(imovel)}</strong><span>Renda de</span></div>` : ''}
         </div>
 
         <div class="cta-row" style="margin-top:32px;">

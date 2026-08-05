@@ -73,7 +73,7 @@ const IMOVEIS = [
     vagas: 2,
     area: 72.23,
     destaque: false,
-    lancamento: false,
+    lancamento: true,
     renda: null,
     descricao: "Casa grande em condomínio clube fechado, com 3 quartos sendo 2 suítes. Lazer e comodidade para toda a família, com piscinas, espaços gourmet, salão de jogos, playground e estacionamento para visitantes.\n\nAo lado da nova Avenida Metropolitana, garantindo mobilidade e acesso rápido a mais de 50 bairros e às praias da Grande Ilha.",
     capa: "img/terrari3.jpg",
@@ -187,7 +187,82 @@ const IMOVEIS = [
       "img/viena6.jpg",
       "img/viena7.jpg",
     ]
-  }
+  },
+
+  {
+    id: 7,
+    tipo: "Apartamento",
+    operacao: "Venda",
+    titulo: "Apartamento no Village da Águas II",
+    bairro: "Maiobinha",
+    cidade: "São José de Ribamar - MA",
+    preco: 230000,
+    quartos: 2,
+    banheiros: 1,
+    vagas: false,
+    area: 40.94,
+    destaque: false,
+    lancamento: true,
+    renda: null,
+    descricao: "Lazer completo com piscinas, playground, campo de futebol, salão de festas, salão de jogos, brinquedoteca, academia ao ar livre e muito mais.\n\n Não deixe essa oportunidade passar: invista no seu futuro e realize o sonho da casa própria em um condomínio completo!",
+    capa: "img/aguas1.jpeg",
+    imagens: [
+      "img/aguas1.jpeg",
+      "img/aguas2.jpg",
+      "img/aguas3.jpg",
+      "img/aguas4.jpg"
+    ]
+  },
+
+   {
+    id: 8,
+    tipo: "Apartamento",
+    operacao: "Venda",
+    titulo: "Apartamento no Plaza das Flores VI",
+    bairro: "Pindaí",
+    cidade: "Paço do Lumiar - MA",
+    preco: 205000,
+    quartos: 2,
+    banheiros: 1,
+    vagas: false,
+    area: 46.12,
+    destaque: false,
+    lancamento: false,
+    renda: null,
+    descricao: "A área de lazer oferece piscina adulto e infantil, quadra poliesportiva, salão de festas, quiosques com churrasqueira, academia ao ar livre, playground, praças e diversos espaços para toda a família.\n\n Por participar do Programa Minha Casa Minha Vida, você terá a oportunidade de obter um desconto de até R$ 55.000 (subsídio) no valor total do imóvel",
+    capa: "img/floresVI1.jpg",
+    imagens: [
+      "img/floresVI1.jpg",
+      "img/floresVI2.jpg",
+      "img/floresVI3.jpg",
+      "img/floresVI4.jpg"
+    ]
+  },
+
+  {
+    id: 9,
+    tipo: "Apartamento",
+    operacao: "Venda",
+    titulo: "Apartamento no New Life",
+    bairro: "Turu",
+    cidade: "São Luís - MA",
+    preco: 280000,
+    quartos: 2,
+    banheiros: 1,
+    vagas: 1,
+    area: 42.52,
+    destaque: false,
+    lancamento: false,
+    renda: null,
+    descricao: "A área de lazer do Newlife tem piscina infantil, piscina adulto e um charmoso solarium. E para comemorar os melhores momentos um delicioso salão de festas com churrasqueira faz o convite.\n\n Todas as torres contam com elevador, garantindo mais comodidade e acessibilidade para os moradores.",
+    capa: "img/newlife1.JPG",
+    imagens: [
+      "img/newlife1.JPG",
+      "img/newlife2.JPG",
+      "img/newlife3.JPG",
+      "img/newlife4.JPG"
+    ]
+  },
 
 ];
 

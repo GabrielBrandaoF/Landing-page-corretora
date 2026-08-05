@@ -127,7 +127,7 @@ function renderDetalheImovel() {
         <div class="galeria-principal">
           <img id="foto-principal" src="${imovel.imagens[0]}" alt="${imovel.titulo}">
           <span class="property-tag property-tag-op" style="position:absolute;top:18px;left:18px;">${imovel.operacao}</span>
-          ${imovel.lancamento ? '<span class="property-tag property-tag-lancamento" style="position:absolute;top:18px;right:18px;">Lançamento</span>' : ''}
+          ${imovel.lancamento ? '<span class="property-tag property-tag-lancamento-detalhe">Lançamento</span>' : ''}
           ${imovel.imagens.length > 1 ? `
             <button class="galeria-nav galeria-prev" type="button" aria-label="Foto anterior">‹</button>
             <button class="galeria-nav galeria-next" type="button" aria-label="Próxima foto">›</button>
